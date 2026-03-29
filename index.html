@@ -40,7 +40,6 @@
         <h2 class="titulo-seccion">Tienda Oficial</h2>
         
         <div class="store-container">
-            
             <div class="card-producto">
                 <div class="img-container"><img src="casaca senior.jpg" alt="Uniforme Senior"></div>
                 <div class="card-body-tienda">
@@ -76,43 +75,6 @@
                     </button>
                 </div>
             </div>
-
-            <div class="card-producto">
-                <div class="img-container"><img src="casaca primera.jpg" alt="Uniforme Primera"></div>
-                <div class="card-body-tienda">
-                    <span class="tag">Primera División</span>
-                    <h3>Juvenil</h3>
-                    <p class="precio">120.000 ₲</p>
-                    <button onclick="comprar('el Uniforme de Primera')" class="btn-whatsapp">
-                        <i class="fab fa-whatsapp"></i> PEDIR AHORA
-                    </button>
-                </div>
-            </div>
-
-            <div class="card-producto">
-                <div class="img-container"><img src="casaca con sponsor.jpg" alt="Uniforme con Sponsor"></div>
-                <div class="card-body-tienda">
-                    <span class="tag">Edición Especial</span>
-                    <h3>Categoria primera</h3>
-                    <p class="precio">120.000 ₲</p>
-                    <button onclick="comprar('el Kit con Sponsor')" class="btn-whatsapp">
-                        <i class="fab fa-whatsapp"></i> PEDIR AHORA
-                    </button>
-                </div>
-            </div>
-
-            <div class="card-producto">
-                <div class="img-container"><img src="casaca primera con sponsor.jpg" alt="Uniforme Primera Pro"></div>
-                <div class="card-body-tienda">
-                    <span class="tag">Pro 2026</span>
-                    <h3>Categoria juvenil</h3>
-                    <p class="precio">120.000 ₲</p>
-                    <button onclick="comprar('el Uniforme Pro')" class="btn-whatsapp">
-                        <i class="fab fa-whatsapp"></i> PEDIR AHORA
-                    </button>
-                </div>
-            </div>
-
         </div>
     </div>
 
@@ -131,9 +93,6 @@
                 <div class="slide"><img src="RA.jpg" alt="RA"></div>
                 <div class="slide"><img src="hym comercial.jpg" alt="Hym Comercial"></div>
                 <div class="slide"><img src="despensa boqueron.jpg" alt="Despensa Boquerón"></div>
-                
-                <div class="slide"><img src="ariana modas.jpeg" alt="Ariana Modas"></div>
-                <div class="slide"><img src="super total.jpeg" alt="Super Total"></div>
             </div>
         </div>
     </div>
@@ -141,42 +100,123 @@
     <footer>
         <img src="club fondo trans.png" alt="Logo" class="footer-logo">
         <h3>Club San José-Mi</h3>
-        <p>¡Seguinos en nuestras redes oficiales!</p>
-        
-       <div class="social-links">
-    <a href="https://www.facebook.com/share/1LEmsB3Ni7/?mibextid=wwXIfr" target="_blank">
-        <i class="fab fa-facebook"></i>
-    </a>
-    <a href="https://www.instagram.com/club.sanjosemi?igsh=MWZuODUxNndlaXRkeg%3D%3D&utm_source=qr" target="_blank">
-        <i class="fab fa-instagram"></i>
-    </a> 
-</div>
+        <div class="social-links">
+            <a href="https://www.facebook.com/share/1DRFrTNJcx/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/club.sanjosemi" target="_blank"><i class="fab fa-instagram"></i></a> 
+        </div>
         <hr class="footer-divider">
         <p class="copyright">&copy; 2026 Club San José-Mi - Sitio Oficial</p>
     </footer>
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyAbrpQQDrGLp5KBdjhKvTcL_fHbriU1gEU",
-    authDomain: "club-san-jose-mi.firebaseapp.com",
-    projectId: "club-san-jose-mi",
-    storageBucket: "club-san-jose-mi.firebasestorage.app",
-    messagingSenderId: "145434946296",
-    appId: "1:145434946296:web:9bbd3eedd931537672a90d",
-    measurementId: "G-25MFQ6MC07"
-  };
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
-    
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAbrpQQDrGLp5KBdjhKvTcL_fHbriU1gEU",
+            authDomain: "club-san-jose-mi.firebaseapp.com",
+            databaseURL: "https://vizzu-web-default-rtdb.firebaseio.com", 
+            projectId: "club-san-jose-mi",
+            storageBucket: "club-san-jose-mi.firebasestorage.app",
+            messagingSenderId: "145434946296",
+            appId: "1:145434946296:web:9bbd3eedd931537672a90d",
+            measurementId: "G-25MFQ6MC07"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+        firebase.analytics();
+
+        function cerrarPopupSorteo() {
+            document.getElementById('popup-sorteo-shein').style.display = 'none';
+        }
+
+        function mostrarFormSorteo() {
+            setTimeout(() => {
+                document.getElementById('paso-1-shein').style.display = 'none';
+                document.getElementById('paso-2-shein').style.display = 'block';
+            }, 1000);
+        }
+
+        async function guardarSorteoShein() {
+            const nombre = document.getElementById('nombre-shein').value;
+            const tel = document.getElementById('whatsapp-shein').value;
+
+            if (nombre === "" || tel === "") {
+                alert("¡No olvides completar tus datos!");
+                return;
+            }
+
+            try {
+                await db.ref("participantes").push({
+                    nombre: nombre,
+                    telefono: tel,
+                    fecha: new Date().toLocaleString()
+                });
+
+                alert("¡Registrado con éxito! Mucha suerte.");
+                cerrarPopupSorteo();
+            } catch (e) {
+                console.error("Error: ", e);
+                alert("Hubo un error de conexión.");
+            }
+        }
+    </script>
+
+    <style>
+        #popup-sorteo-shein {
+            position: fixed; bottom: 20px; right: 20px; z-index: 99999;
+            display: flex; transition: all 0.5s ease;
+        }
+        .circulo-shein {
+            background: white; border: 8px solid #d32f2f;
+            width: 320px; height: 320px; border-radius: 50%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 25px; box-sizing: border-box;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3); font-family: Arial, sans-serif; position: relative;
+        }
+        .cerrar-popup {
+            position: absolute; top: 20px; right: 25px; background: none;
+            border: none; font-size: 20px; color: #999; cursor: pointer;
+        }
+        .titulo-sorteo { color: #d32f2f; margin: 0; font-size: 22px; }
+        .subtitulo-sorteo { margin: 2px 0 10px; font-weight: bold; color: #555; font-size: 12px; }
+        .btn-redes-shein {
+            display: block; width: 180px; padding: 8px; margin: 5px;
+            border-radius: 20px; text-decoration: none; font-weight: bold; color: white;
+            font-size: 11px; text-align: center;
+        }
+        .btn-ig { background: linear-gradient(45deg, #f09433, #dc2743, #cc2397); }
+        .btn-fb { background: #1877F2; }
+        .input-shein {
+            width: 180px; padding: 9px; margin: 4px; border-radius: 15px;
+            border: 1px solid #ddd; text-align: center; font-size: 12px;
+        }
+        .btn-ganar-shein {
+            background: #d32f2f; color: white; border: none; padding: 10px 20px;
+            border-radius: 20px; cursor: pointer; font-weight: bold; margin-top: 8px;
+        }
+    </style>
+
+    <div id="popup-sorteo-shein">
+        <div class="circulo-shein">
+            <button class="cerrar-popup" onclick="cerrarPopupSorteo()">×</button>
+            <div id="paso-1-shein">
+                <h1 class="titulo-sorteo">🏆 SORTEO</h1>
+                <p class="subtitulo-sorteo">CLUB SAN JOSÉ-MI</p>
+                <p style="font-size: 11px; color: #777; margin-bottom: 10px;">Seguinos para participar:</p>
+                <a href="https://www.instagram.com/club.sanjosemi" target="_blank" class="btn-redes-shein btn-ig" onclick="mostrarFormSorteo()">Seguir en Instagram</a>
+                <a href="https://www.facebook.com/share/1DRFrTNJcx/?mibextid=wwXIfr" target="_blank" class="btn-redes-shein btn-fb" onclick="mostrarFormSorteo()">Seguir en Facebook</a>
+            </div>
+            <div id="paso-2-shein" style="display: none;">
+                <p style="color: #2e7d32; font-weight: bold; font-size: 12px;">✅ PASO 1 LISTO</p>
+                <input type="text" id="nombre-shein" class="input-shein" placeholder="Nombre completo">
+                <input type="tel" id="whatsapp-shein" class="input-shein" placeholder="Tu WhatsApp">
+                <button class="btn-ganar-shein" onclick="guardarSorteoShein()">¡PARTICIPAR!</button>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
