@@ -38,10 +38,9 @@ nav a {
     font-size: 0.9rem;
 }
 
-/* HERO - CORREGIDO PARA MOSTRAR LA CANCHA Y DAR ESPACIO */
+/* HERO */
 .hero {
     min-height: 85vh; 
-    /* IMPORTANTE: Usamos %20 para el espacio en el nombre del archivo */
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
                 url('CNACHA%20DE%20SANJO.jpg'); 
     background-size: cover;
@@ -56,7 +55,6 @@ nav a {
     padding: 60px 5%;
 }
 
-/* EL ESCUDO GRANDE E IMPACTANTE */
 .hero img.hero-logo {
     display: block;
     margin: 0 auto 30px auto;
@@ -64,7 +62,7 @@ nav a {
     max-width: 90% !important; 
     height: auto !important;
     max-height: 450px !important;
-    filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.9)); /* Sombra más profunda */
+    filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.9));
     object-fit: contain;
 }
 
@@ -88,7 +86,7 @@ nav a {
 .team-box { font-weight: bold; font-size: 1.2rem; }
 .match-info { text-align: center; color: var(--azul-principal); }
 
-/* TIENDA */
+/* TIENDA - SECCIÓN CORREGIDA */
 .container { padding: 40px 5%; }
 .titulo-seccion { border-left: 5px solid var(--rojo-acento); padding-left: 15px; text-transform: uppercase; font-size: 1.5rem; margin-bottom: 30px; }
 
@@ -99,6 +97,7 @@ nav a {
     gap: 20px;
     padding: 20px 0;
     -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
 }
 
 .store-container::-webkit-scrollbar { display: none; }
@@ -115,12 +114,33 @@ nav a {
     border: 1px solid #eee;
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
-.img-container { height: 250px; background: #f9f9f9; display: flex; align-items: center; justify-content: center; padding: 15px; }
-.img-container img { max-width: 85%; max-height: 90%; object-fit: contain; }
+.img-container { 
+    height: 280px; 
+    background: #f9f9f9; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 10px; 
+}
 
-.card-body-tienda { padding: 20px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.img-container img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain; 
+}
+
+.card-body-tienda { 
+    padding: 20px; 
+    text-align: center; 
+    flex-grow: 1; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+}
+
 .precio { font-size: 1.6rem; color: var(--azul-principal); font-weight: 800; margin: 10px 0; }
 .tag { color: var(--rojo-acento); font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
 
@@ -158,7 +178,6 @@ footer {
 }
 .footer-logo { width: 80px; margin-bottom: 20px; }
 
-/* REDES SOCIALES SIN RAYAS */
 .social-links { margin: 20px 0; }
 .social-links a {
     text-decoration: none !important; 
@@ -169,7 +188,6 @@ footer {
 }
 
 .social-links a:hover {
-    text-decoration: none !important;
     color: var(--rojo-acento);
 }
 
@@ -178,20 +196,12 @@ footer {
 
 /* RESPONSIVE MÓVIL */
 @media (max-width: 768px) {
-    .hero h1 { 
-        font-size: 2rem; /* Achicamos un poco el texto para que no tape todo */
-    }
-    .hero { 
-        min-height: 70vh; 
-        padding-top: 80px; 
-        /* Forzamos a que la imagen de fondo se vea bien en vertical */
-        background-attachment: scroll; 
-    }
-    /* EL LOGO EN CELULARES: Lo subimos a 320px para que sea llamativo */
-    .hero img.hero-logo { 
-        width: 320px !important; 
-        max-width: 85% !important;
-        max-height: 280px !important; 
+    .hero h1 { font-size: 2.2rem; }
+    .hero { min-height: 65vh; padding-top: 100px; }
+    .hero img.hero-logo { width: 300px !important; max-height: 250px !important; }
+    .store-container {
+        padding-left: 5%;
+        padding-right: 5%;
     }
 }
 
@@ -199,11 +209,64 @@ footer {
 @media (min-width: 1024px) {
     .store-container {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         overflow-x: visible;
         justify-content: center;
-        padding: 20px 5%;
+        gap: 30px;
+        padding: 20px 0;
         scroll-snap-type: none;
     }
-    .card-producto { max-width: 100%; }
+    .card-producto { 
+        min-width: unset; 
+        max-width: 100%; 
+        flex-shrink: 1; 
+    }
+}
+
+.countdown-timer {
+    display: block;
+    margin-top: 15px;
+    background: #222;
+    color: var(--rojo-acento);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: 1px solid rgba(227, 6, 19, 0.3);
+}
+
+.countdown-timer span {
+    color: #ffffff;
+}
+/* CONTROL DE TAMAÑO PARA TUS LOGOS PROPIOS */
+.bancos-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* Espacio entre los iconos */
+    flex-wrap: wrap; /* Si son muchos, pasan a la siguiente fila en móvil */
+    margin-top: 10px;
+}
+
+.bancos-grid img {
+    height: 24px; /* ESTO controla el tamaño. Si los querés más grandes, subí a 30px */
+    width: auto;  /* Mantiene la proporción original */
+    max-width: 60px; /* Evita que logos muy largos (como Continental) ocupen mucho espacio */
+    object-fit: contain; /* Ajusta la imagen al espacio sin deformarla */
+    filter: grayscale(100%); /* Opcional: los pone en blanco y negro para que sea más serio */
+    opacity: 0.8;
+    transition: 0.3s ease;
+}
+
+.bancos-grid img:hover {
+    filter: grayscale(0%); /* Vuelven a color cuando pasás el mouse */
+    opacity: 1;
+    transform: scale(1.1); /* Efecto de crecimiento suave */
+}
+
+/* Un separador para el icono de WhatsApp */
+.ws-mini {
+    border-left: 1px solid rgba(255,255,255,0.2);
+    padding-left: 10px;
 }
